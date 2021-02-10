@@ -1,0 +1,42 @@
+html {
+  background-color: #333;
+}
+body {
+  background-color:grey;
+  width: 750px;
+  margin: 0 auto;
+  justify-content: center;
+}
+.question {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 100px;
+  margin-bottom: 10px;
+  padding:10px;
+}
+.answers {
+  margin-bottom: 20px;
+  text-align: center;
+  display: flexbox;
+  padding: 10px;
+}
+
+button{
+  font-family: 'Work Sans', sans-serif;
+	font-size: 22px;
+	background-color: #279;
+	color: #fff;
+	border: 0px;
+	border-radius: 3px;
+	padding: 20px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+button:hover{
+	background-color: #38a;
+}
+
+.quiz-container{
+  position: center;
+  height: 200px;
+  margin-top: 40px;
+}
