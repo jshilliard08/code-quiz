@@ -1,34 +1,55 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Code Quiz" />
+    <meta name="Description" content="Coding Quiz" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Code Quiz</title>
+    <title>Coding Quiz</title>
 </head>
 
 <body>
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">
-            <a class="btn btn-secondary" href="highscore.html" role="button">HIGHSCORE</a>
-        </span>
-    </nav>
-    <main>
-    <div class="jumbotron">
-        <h1 class="display-3">Coding Quiz</h1>
-        <p class="lead">This is a timed multiple choice quiz.</p>
-        <hr class="my-2">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="highscore.html">View Highscores</a>
+        </div>
+      </nav>
+    
+          <div class="jumbotron jumbotron-fluid bg-light" id="startPage">
+              <div class="container bg-light p-4">
+                  <h1 class="display-3 font-weight-bold">Coding Quiz</h1>
+                  <p class="lead">This will be a timed multiple quiz.</p>
+                  <hr class="my-2">
+                  <p>You will be given 90 seconds to answer 5 questions.</p>
+                  <p class="lead">
+                    <button id="startTime">Start Quiz</button>
+                  </p>
+              </div>
+          </div>
 
-            <a class="btn btn-secondary btn-lg" href="game.html" role="button">Start Here</a>
-        </p>
-    </div>
-               
+          
+          <div class="quiz-container">
+            <div id="question-container" class="hide">
+              <div id="question">Question</div>
+              <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+              </div>
+            </div>
+                <div class="buttons">
+                    <button id="next" class="next">NEXT</button>
+                </div>
+    
+            </div>
+        </div>
 
-    </main>
+</body>
+
+    <script src="css/script.js"></script>
 
 
 </body>

@@ -1,5 +1,12 @@
-//List of all your questions chaoices and answers 
-var questionArr = [
+var startButton = document.getElementById("startTime")
+var questionContainerEl = document.getElementById("question-container")
+var questionEl = document.getElementById("question")
+var answersEl = document.getElementById("answers")
+var startPageEl = document.getElementById("startPage")
+
+
+
+var question = [
     {
         title: "JavaScript is a ___ -side programming language.",
         choices: ["client", "server", "both", "none"],
@@ -28,89 +35,32 @@ var questionArr = [
     },
 ];
 
-var score = 0;
-var questionArr = 0;
+var questionIndex = 0
 
-// write logic for application
-var timeLeft = document.getElementById("timeLeft");
-var timer = document.getElementById("timer");
-var questions = document.getElementById("questions");
-var container = document.getElementById("container");
-var startBtn = document.getElementById("startTime")
+startButton.addEventListener("click", startTime)
 
-var secondsLeft = 89;
-// Holds interval time
-var holdInterval = 0;
-// Holds penalty time
-//var penalty = 10;
-// Creates new element
-var ulCreate = document.createElement("answers");
-
-// Triggers timer on button, shows user a display on the screen
-document.getElementById("startTime").addEventListener("click") {
-    alert("Are you sure you want to start?")
-    // We are checking zero because its originally set to zero
-    if (holdInterval === 0) {
-        holdInterval = setInterval(function () {
-            secondsLeft--;
-            timeLeft.textContent = "Time: " + secondsLeft;
-
-            if (secondsLeft <= 0) {
-                clearInterval(holdInterval);
-                allDone();
-                timeLeft.textContent = "Time's up!";
-            }
-        }, 1000);
-    }
-    render(questionArr);
-};
-
-// Renders questions and choices to page: 
-function render(questionArr) {
-    // Clears existing data 
-    questions.innerHTML = "";
-    ulCreate.innerHTML = "";
-    // For loops to loop through all info in array
-    for (var i = 0; i < questions.length; i++) {
-        // Appends question title only
-        var userQuestion = questions[questionIndex].title;
-        var userChoices = questions[questionIndex].choices;
-        questions.textContent = userQuestion;
-    }
-    // New for each for question choices
-    userChoices.forEach(function (newItem) {
-        var listItem = document.createElement("li");
-        listItem.textContent = newItem;
-        questionsArr.appendChild(ulCreate);
-        ulCreate.appendChild(listItem);
-        listItem.addEventListener("click", (compare));
-    })
+function startTime() {
+    alert("Are you sure?");
+    startButton.classList.add("quiz-container")
+    startButton.classList.remove("startPage")
+    //trying to get my quiz container to appear
+    //shuffleQuestions = questionArr.sort(() => Math.random() -.5)
+    //questionIndex = 0
 }
 
-
-
-// variables to keep track of the quiz state
-
-
-// variables to referance DOM elements
-//var answer1 = document.getElementById("answer1")
-
-// function to start quiz
-
-// function to check the choice to the answer
-//if else statement to check if answer is correct, timer goes down with incorrect answer
-
-
-
-// function to end the quiz and tally up the score
-
-
-// function to save high score to high score page
-// hint (window.location.href)
-
-//might want to make another JS page
-//function that prints highscores to hight score page
-
-
+function showQuestion(question) {
+    console.log(question)
+    questionElement.innerText = question.question
+    question.choices.forEach(choices => {
+      var button = document.createElement('button')
+      button.innerText = choices.text
+      button.classList.add('btn')
+      if (choices.answer) {
+        button.dataset.correct = choices.answer
+      }
+      button.addEventListener('click', selectAnswer)
+      answerButtonsElement.appendChild(button)
+    })
+  }
 
 
