@@ -14,40 +14,26 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="highscore.html">View Highscores</a>
+        <div id="timer" class="hide">Time Remaining:</div>
         </div>
       </nav>
     
-          <div class="jumbotron jumbotron-fluid bg-light" id="startPage">
-              <div class="container bg-light p-4">
-                  <h1 class="display-3 font-weight-bold">Coding Quiz</h1>
-                  <p class="lead">This will be a timed multiple quiz.</p>
-                  <hr class="my-2">
-                  <p>You will be given 90 seconds to answer 5 questions.</p>
-                  <p class="lead">
-                    <button id="startTime">Start Quiz</button>
-                  </p>
-              </div>
-          </div>
-
-          
-          <div class="quiz-container">
-            <div id="question-container" class="hide">
-              <div id="question">Question</div>
-              <div id="answer-buttons" class="btn-grid">
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
-              </div>
-            </div>
-                <div class="buttons">
-                    <button id="next" class="next">NEXT</button>
-                </div>
-    
-            </div>
+      <div id="wrapper">
+        <!-- Div for timer -->
+        <div id="currentTime"></div>
+        <!-- Div for quiz content -->
+        <div id="questionsDiv">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect
+                answers
+                will penalize your score/time by ten seconds!</p>
+            <ul id="choicesUl"></ul>
+            <!-- Buttons -->
+            <button id="startTime">Start Quiz</button>
         </div>
 
-</body>
+    </div>
+
 
     <script src="css/script.js"></script>
 
