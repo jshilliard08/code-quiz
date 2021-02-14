@@ -1,4 +1,4 @@
-var question = [
+var questions = [
     {
         title: "JavaScript is a ___ -side programming language.",
         choices: ["client", "server", "both", "none"],
