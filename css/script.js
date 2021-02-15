@@ -30,14 +30,13 @@ var questions = [
 var score = 0;
 var questionIndex = 0;
 
-// Start working code 
-// Declared variables
+// Declared Variables
 var currentTime = document.querySelector("#currentTime");
 var timer = document.querySelector("#startTime");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
 
-// Seconds left is 15 seconds per question:
+// 90 secounds to complete the quiz
 var secondsLeft = 89;
 // Holds interval time
 var holdInterval = 0;
@@ -96,12 +95,12 @@ function compare(event) {
         // Correct condition 
         if (element.textContent == questions[questionIndex].answer) {
             score++;
-            createDiv.textContent = "Correct! The answer is:  " + questions[questionIndex].answer;
+            createDiv.textContent = "Correct! " + questions[questionIndex].answer;
             // Correct condition 
         } else {
             // Will deduct -5 seconds off secondsLeft for wrong answers
             secondsLeft = secondsLeft - penalty;
-            createDiv.textContent = "Wrong! The correct answer is:  " + questions[questionIndex].answer;
+            createDiv.textContent = "Incorrect! 10 seconds has been deducted from your time!" + questions[questionIndex].answer;
         }
 
     }
@@ -175,7 +174,7 @@ function allDone() {
 
         if (initials === null) {
 
-            console.log("No value entered!");
+            console.log("Please enter your initials");
 
         } else {
             var finalScore = {
@@ -193,7 +192,7 @@ function allDone() {
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
             // Travels to final page
-            window.location.replace("./HighScores.html");
+            window.location.replace("./highscore.html");
         }
     });
 
