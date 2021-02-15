@@ -31,27 +31,27 @@ var score = 0;
 var questionIndex = 0;
 
 // Declared Variables
-var currentTime = document.querySelector("#currentTime");
-var timer = document.querySelector("#startTime");
-var questionsDiv = document.querySelector("#questionsDiv");
-var wrapper = document.querySelector("#wrapper");
+var currentTime = document.getElementById("currentTime");
+var timer = document.getElementById("startTime");
+var questionsDiv = document.getElementById("questionsDiv");
+var wrapper = document.getElementById("wrapper");
 
 // 90 secounds to complete the quiz
 var secondsLeft = 89;
-// Holds interval time
+
 var holdInterval = 0;
 // Holds penalty time
 var penalty = 10;
-// Creates new element
+// Creates list 
 var ulCreate = document.createElement("ul");
 
-// Triggers timer on button, shows user a display on the screen
+// Prompts the timer to appear on screen
 timer.addEventListener("click", function () {
-    // We are checking zero because its originally set to zero
+
     if (holdInterval === 0) {
         holdInterval = setInterval(function () {
             secondsLeft--;
-            currentTime.textContent = "Time: " + secondsLeft;
+            currentTime.textContent = "Time Remaining: " + secondsLeft;
 
             if (secondsLeft <= 0) {
                 clearInterval(holdInterval);
@@ -68,14 +68,14 @@ function render(questionIndex) {
     // Clears existing data 
     questionsDiv.innerHTML = "";
     ulCreate.innerHTML = "";
-    // For loops to loop through all info in array
+    // loops the array of questions
     for (var i = 0; i < questions.length; i++) {
-        // Appends question title only
+        // Grabs only the titles as the questions
         var userQuestion = questions[questionIndex].title;
         var userChoices = questions[questionIndex].choices;
         questionsDiv.textContent = userQuestion;
     }
-    // New for each for question choices
+    // this lists the question and choices the correspond
     userChoices.forEach(function (newItem) {
         var listItem = document.createElement("li");
         listItem.textContent = newItem;
@@ -84,7 +84,7 @@ function render(questionIndex) {
         listItem.addEventListener("click", (compare));
     })
 }
-// Event to compare choices with answer
+// this let player know if they are correct or incorrect
 function compare(event) {
     var element = event.target;
 
@@ -92,32 +92,32 @@ function compare(event) {
 
         var createDiv = document.createElement("div");
         createDiv.setAttribute("id", "createDiv");
-        // Correct condition 
+        // if correct 
         if (element.textContent == questions[questionIndex].answer) {
             score++;
             createDiv.textContent = "Correct! " + questions[questionIndex].answer;
-            // Correct condition 
+            // receive a correct message
         } else {
-            // Will deduct -5 seconds off secondsLeft for wrong answers
+            // if inccorrect 5 seconds will be deducted for inccorect answers
             secondsLeft = secondsLeft - penalty;
-            createDiv.textContent = "Incorrect! 10 seconds has been deducted from your time!" + questions[questionIndex].answer;
+            createDiv.textContent = "Incorrect! The correct answer is " + questions[questionIndex].answer;
         }
 
     }
-    // Question Index determines number question user is on
+    // the number of quetion in index
     questionIndex++;
 
     if (questionIndex >= questions.length) {
-        // All done will append last page with user stats
+        // when questions are complete will prompt All done
         allDone();
-        createDiv.textContent = "End of quiz!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
+        createDiv.textContent = "You reached the end of the quiz!" + " " + "You scored  " + score + "/" + questions.length + " Correct!";
     } else {
         render(questionIndex);
     }
     questionsDiv.appendChild(createDiv);
 
 }
-// All done will append last page
+// creating a last page
 function allDone() {
     questionsDiv.innerHTML = "";
     currentTime.innerHTML = "";
@@ -135,7 +135,7 @@ function allDone() {
 
     questionsDiv.appendChild(createP);
 
-    // Calculates time remaining and replaces it with score
+    // The final score is the amount of time left
     if (secondsLeft >= 0) {
         var timeRemaining = secondsLeft;
         var createP2 = document.createElement("p");
@@ -145,14 +145,14 @@ function allDone() {
         questionsDiv.appendChild(createP2);
     }
 
-    // Label
+    // Labels
     var createLabel = document.createElement("label");
     createLabel.setAttribute("id", "createLabel");
     createLabel.textContent = "Enter your initials: ";
 
     questionsDiv.appendChild(createLabel);
 
-    // input
+    // enter initials here
     var createInput = document.createElement("input");
     createInput.setAttribute("type", "text");
     createInput.setAttribute("id", "initials");
@@ -191,7 +191,7 @@ function allDone() {
             allScores.push(finalScore);
             var newScore = JSON.stringify(allScores);
             localStorage.setItem("allScores", newScore);
-            // Travels to final page
+            // Takes you 
             window.location.replace("./highscore.html");
         }
     });

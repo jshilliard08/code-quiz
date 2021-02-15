@@ -1,13 +1,13 @@
-var highScore = document.querySelector("#highScore");
+var highscore = document.querySelector("#highscore");
 var clear = document.querySelector("#clear");
 var goBack = document.querySelector("#goBack");
 
-// Event listener to clear scores 
+// this clear highscore history 
 clear.addEventListener("click", function () {
     localStorage.clear();
     location.reload();
 });
-// Retreives local stroage 
+// Get the highscore history and displays it
 var allScores = localStorage.getItem("allScores");
 allScores = JSON.parse(allScores);
 
@@ -17,11 +17,11 @@ if (allScores !== null) {
 
         var createLi = document.createElement("li");
         createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-        highScore.appendChild(createLi);
+        highscore.appendChild(createLi);
 
     }
 }
-// Event listener to move to index page
+// takes player back to the quiz
 goBack.addEventListener("click", function () {
     window.location.replace("./index.html");
 });
